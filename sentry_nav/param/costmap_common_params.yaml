@@ -1,0 +1,18 @@
+robot_radius: 0.50
+obstacle_range: 3.0
+raytrace_range: 3.0
+
+inflation_radius: 0.5
+cost_scaling_factor: 2.0
+
+map_type: costmap
+
+# 激光雷达相关参数
+obstacle_layer:
+  observation_sources: scan
+  scan: {sensor_frame: livox_frame, data_type: LaserScan, topic: /scan, marking: true, clearing: true}
+
+plugins:
+  - {name: static_layer, type: "costmap_2d::StaticLayer"}
+  - {name: obstacle_layer, type: "costmap_2d::ObstacleLayer"}
+  - {name: inflation_layer, type: "costmap_2d::InflationLayer"}

@@ -1,0 +1,18 @@
+GlobalPlanner:
+  allow_unknown: false  # 设置为 false，避免路径规划穿越未知区域，以提升安全性
+  default_tolerance: 0.2  # 提高目标点的容差，使路径到达更灵活，视环境要求可调整
+  visualize_potential: true  # 推荐设置为 true，方便在调试阶段观察势场计算
+
+  use_dijkstra: true  # 使用 Dijkstra 算法，保证路径规划稳定性
+  use_quadratic: true  # 使用二次代价插值，提高路径平滑性
+  use_grid_path: false  # 使用梯度下降生成路径，使路径更加连贯
+  old_navfn_behavior: false  # 保持新的规划行为，不复用旧 NavFn 行为
+
+  lethal_cost: 253  # 致命代价值，用于标记不可行区域
+  neutral_cost: 50  # 中等代价区域
+  cost_factor: 3.0  # 代价权重调整，平衡路径的长度与安全性
+  
+  publish_potential: true  # 发布代价势函数用于可视化调试
+  orientation_mode: 0  # 保持原方向设置
+  orientation_window_size: 1  # 保持窗口方向设置默认值
+  planner_frequency: 2.0  # 每秒重规划一次

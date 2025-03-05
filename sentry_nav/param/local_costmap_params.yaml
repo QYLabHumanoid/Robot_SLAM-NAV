@@ -1,0 +1,13 @@
+local_costmap:
+  global_frame: map  # 配合您的 TF 设置，确保一致
+  robot_base_frame: base_link  # 机器人坐标系，需与实际 TF 保持一致
+
+  update_frequency: 5.0  # 更新频率，默认10Hz
+  publish_frequency: 5.0  # 发布频率，和更新频率相同即可
+  transform_tolerance: 0.5  # 容忍的坐标变换延迟，适合高实时性系统
+
+  static_map: false  # 禁用静态地图，提高局部动态适应性
+  rolling_window: true  # 启用动态窗口，使局部地图可以随机器人移动调整
+  width: 5.0  # 增大局部地图宽度（根据激光范围调整）
+  height: 5.0  # 增大局部地图高度（根据激光范围调整）
+  resolution: 0.1  # 建议分辨率维持默认，便于匹配全局地图精度

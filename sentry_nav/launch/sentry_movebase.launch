@@ -1,0 +1,41 @@
+<!--<launch>
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base1" output="screen" clear_params="true" args="/map:=prior_map /odom:=Odometry">
+        <rosparam file="$(find sentry_nav)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find sentry_nav)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find sentry_nav)/param/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find sentry_nav)/param/global_costmap_params.yaml" command="load" />
+        <rosparam file="$(find sentry_nav)/param/base_local_planner_params.yaml" command="load" />
+        <rosparam file="$(find sentry_nav)/param/global_planner_params.yaml" command="load" />
+    </node>
+
+    <node pkg="sentry_nav" type="trans_tf_2d" name="trans_tF_2d" />
+     <node pkg="sentry_nav" type="trans_tf_2d_odom" name="trans_tF_2d_odom" />
+    <node pkg="sentry_nav" type="trans_odom_2d" name="trans_odom_2d" /> 
+	<include file="$(find velocity_smoother_ema)/launch/velocity_smoother_ema.launch">
+	</include>
+</launch>-->
+
+
+<launch>
+    <!-- 启动 move_base -->
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base1" output="screen" clear_params="true" args="/map:=prior_map /odom:=Odometry">
+        <rosparam file="$(find sentry_nav)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find sentry_nav)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find sentry_nav)/param/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find sentry_nav)/param/global_costmap_params.yaml" command="load" />
+        <rosparam file="$(find sentry_nav)/param/base_local_planner_params.yaml" command="load" />
+        <rosparam file="$(find sentry_nav)/param/global_planner_params.yaml" command="load" />
+    </node>
+
+    <!-- 启动坐标转换节点 -->
+    <node pkg="sentry_nav" type="trans_tf_2d" name="trans_tf_2d" output="screen" />
+
+    <!--<node pkg="sentry_nav" type="initial_pose_publisher.py" name="initial_pose_publisher" output="screen" />
+
+    
+     包括平滑速度的其他功能 
+    <include file="$(find velocity_smoother_ema)/launch/velocity_smoother_ema.launch" />-->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d /home/unitree/catkin_ws/src/sentry_nav/movebase.rviz" output="screen" />
+
+</launch>
+

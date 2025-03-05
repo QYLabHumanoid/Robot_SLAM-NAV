@@ -1,0 +1,16 @@
+<launch>
+
+    <include file="$(find livox_ros_driver2)/launch_ROS1/rviz_MID360.launch">
+    </include>
+ 
+    <include file="$(find hdl_localization)/launch/hdl_localization_3floor.launch">
+    </include>
+    
+    <include file="$(find pointcloud_to_laserscan)/launch/cloudtoscan.launch">
+    </include>
+
+    <include file="$(find sentry_nav)/launch/sentry_movebase.launch">
+    </include>
+ 
+</launch>
+
